@@ -91,6 +91,7 @@ DeveloperUtilitiesList=(
     nvm
     bash-completion
     telnet
+    htop
 )
 CaskDeveloperUtilitiesList=(
     postman
@@ -252,8 +253,6 @@ MacApplicationToolList=(
     409203825 # Numbers
     409201541 # Pages
     497799835 # Xcode
-    1450874784 # Transporter
-    1274495053 # Microsoft To Do
     1295203466 # Microsoft Remote Desktop 10
     985367838 # Microsoft Outlook
 )
