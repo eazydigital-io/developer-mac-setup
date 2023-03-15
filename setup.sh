@@ -47,26 +47,10 @@ read General
 CaskGeneralToolList=(
     google-chrome
     firefox
-    spotify
 )
 if [ "$General" != "${General#[Yy]}" ] ;then
     echo Yes
     brew install --cask --appdir="/Applications" ${CaskGeneralToolList[@]}
-else
-    echo No
-fi
-
-############# Designer #############
-beginDeploy "############# Designer #############"
-echo -n "Do you wish to install Designer Tools (${bold}${green}y${reset}/${bold}${red}n${reset})? "
-read Designer
-
-CaskDesignerToolList=(
-    adobe-creative-cloud
-)
-if [ "$Designer" != "${Designer#[Yy]}" ] ;then
-    echo Yes
-    brew install --cask --appdir="/Applications" ${CaskDesignerToolList[@]}
 else
     echo No
 fi
@@ -106,15 +90,11 @@ DeveloperUtilitiesList=(
     go
     nvm
     bash-completion
+    telnet
 )
 CaskDeveloperUtilitiesList=(
-    cheatsheet
-    spectacle
     postman
-    dotnet-sdk
-    wireshark
-    # google-chrome-canary
-    # firefox-developer-edition
+
 )
 if [ "$DeveloperUtilities" != "${DeveloperUtilities#[Yy]}" ] ;then
     
@@ -153,13 +133,13 @@ read Database
 
 
 DatabaseToolList=(
-    kafkacat
+   # kafkacat
 )
 CaskDatabaseToolList=(
-    pgadmin4
+   # pgadmin4
     studio-3t
-    graphiql
-    azure-data-studio
+   # graphiql
+   # azure-data-studio
 )
 if [ "$Database" != "${Database#[Yy]}" ] ;then
     echo Yes
@@ -178,7 +158,7 @@ read IDEs
 
 CaskIDEsList=(
     visual-studio-code
-    intellij-idea
+    # intellij-idea
     visual-studio
     android-studio
 )
@@ -227,20 +207,13 @@ if [ "$DevOps" != "${DevOps#[Yy]}" ] ;then
     mv ~/Downloads/docker-app-darwin /usr/local/bin/docker-app
     rm ~/Downloads/docker-app-darwin.tar.gz
 
-
+    
     ## Install AWS CLI
-    #pip3 --version
-    #curl -O https://bootstrap.pypa.io/get-pip.py
-    #python3 get-pip.py --user
-    #pip3 install awscli --upgrade --user
+    brew install awscli
     aws --version
-    #rm get-pip.py
 
 
-    curl "https://d1vvhvl2y92vvt.cloudfront.net/awscli-exe-macos.zip" -o "awscliv2.zip"
-    unzip awscliv2.zip
-    sudo ./aws/install
-    aws2 --version
+
 else
     echo No
 fi
@@ -302,7 +275,7 @@ beginDeploy "############# CLEANING HOMEBREW #############"
 brew cleanup
 
 beginDeploy "############# GLOBAL GIT CONFIG #############"
-sh -c 'curl -s https://raw.githubusercontent.com/maxyermayank/developer-mac-setup/master/.gitignore >> ~/.gitignore'
+cat .gitignore >> ~/.gitignore'
 git config --global push.default current
 git config --global core.excludesfile ~/.gitignore
 git config --global user.name "<username>"
@@ -314,15 +287,15 @@ git config --global color.status auto
 
 beginDeploy "############# ALIASES #############"
 beginDeploy "############# GIT ALIASES #############"
-sh -c 'curl -s https://raw.githubusercontent.com/maxyermayank/developer-mac-setup/master/.git_aliases >> ~/.git_aliases'
+cat .git_aliases >> ~/.git_aliases'
 source ~/.git_aliases
 
 beginDeploy "############# DOCKER ALIASES #############"
-sh -c 'curl -s https://raw.githubusercontent.com/maxyermayank/developer-mac-setup/master/.docker_aliases >> ~/.docker_aliases'
+cat .docker_aliases >> ~/.docker_aliases'
 source ~/.docker_aliases
 
 beginDeploy "############# K8s ALIASES #############"
-sh -c 'curl -s https://raw.githubusercontent.com/maxyermayank/developer-mac-setup/master/.kubectl_aliases >> ~/.kubectl_aliases'
+cat .kubectl_aliases >> ~/.kubectl_aliases'
 source ~/.kubectl_aliases
 
 beginDeploy "############# SETUP BASH PROFILE #############"
