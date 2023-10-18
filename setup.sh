@@ -233,7 +233,7 @@ CaskProductivityToolList=(
     gpg-suite
     microsoft-teams
     microsoft-office
-    zoomus
+    zoom
 )
 if [ "$Productivity" != "${Productivity#[Yy]}" ] ;then
     echo Yes
